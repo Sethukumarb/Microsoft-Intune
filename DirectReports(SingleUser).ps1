@@ -9,7 +9,7 @@ Install-Module -Name ImportExcel -Force -Confirm:$false
 Connect-AzureAD
 
 # Specify the user's UPN (email address)
-$userUPN = "Pavan.kumar@ab-inbev.com"  # Replace with the target user's UPN
+$userUPN = "Sethu.kumar@example.com"  # Replace with the target user's UPN
 
 # Retrieve the direct reports
 $directReports = Get-AzureADUserDirectReport -ObjectId (Get-AzureADUser -ObjectId $userUPN).ObjectId
@@ -18,7 +18,7 @@ $directReports = Get-AzureADUserDirectReport -ObjectId (Get-AzureADUser -ObjectI
 $reportData = $directReports | Select-Object DisplayName, UserPrincipalName, JobTitle, Department
 
 # Define the path for the Excel file (in the Downloads folder)
-$downloadFolder = "C:\AzureGroups"
+$downloadFolder = "C:\Groups"
 $excelFilePath = Join-Path -Path $downloadFolder -ChildPath "DirectReports_$($userUPN.Replace('@', '_')).xlsx"
 
 # Export the data to Excel
